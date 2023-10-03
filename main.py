@@ -1,5 +1,5 @@
-import json
 import os
+import random
 import requests
 
 from datetime import datetime, timezone
@@ -11,15 +11,14 @@ resp = requests.post(
     "https://bsky.social/xrpc/com.atproto.server.createSession",
     json={"identifier": BLUESKY_HANDLE, "password": BLUESKY_APP_PASSWORD},
 )
-resp.raise_for_status()
 session = resp.json()
 
 now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
-# Required fields that each post must include
+text = random.choice(['Tau Time!', 'tau time', 'TAU TIME', 'Tau Time'])
 post = {
     "$type": "app.bsky.feed.post",
-    "text": "Tau Time!",
+    "text": text,
     "createdAt": now,
 }
 
@@ -32,5 +31,3 @@ resp = requests.post(
         "record": post,
     },
 )
-
-resp.raise_for_status()
