@@ -14,6 +14,7 @@ resp = requests.post(
 session = resp.json()
 
 now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+print(now)
 
 text = random.choice(['Tau Time!', 'tau time', 'TAU TIME', 'Tau Time', '\u03C4\u23F3'])
 
@@ -23,12 +24,14 @@ post = {
     "createdAt": now,
 }
 
-resp = requests.post(
-    "https://bsky.social/xrpc/com.atproto.repo.createRecord",
-    headers={"Authorization": "Bearer " + session["accessJwt"]},
-    json={
-        "repo": session["did"],
-        "collection": "app.bsky.feed.post",
-        "record": post,
-    },
-)
+print(post)
+
+# resp = requests.post(
+#     "https://bsky.social/xrpc/com.atproto.repo.createRecord",
+#     headers={"Authorization": "Bearer " + session["accessJwt"]},
+#     json={
+#         "repo": session["did"],
+#         "collection": "app.bsky.feed.post",
+#         "record": post,
+#     },
+# )
