@@ -7,12 +7,15 @@ from datetime import datetime, timezone
 BLUESKY_HANDLE = os.environ['BLUESKY_HANDLE']
 BLUESKY_APP_PASSWORD = os.environ['BLUESKY_APP_PASSWORD']
 
+print(BLUESKY_HANDLE)
+
 resp = requests.post(
     "https://bsky.social/xrpc/com.atproto.server.createSession",
     json={"identifier": BLUESKY_HANDLE, "password": BLUESKY_APP_PASSWORD},
 )
 session = resp.json()
-
+print(session)
+print(session["accessJwt"])
 now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 # text = random.choice(['Tau Time!', 'tau time', 'TAU TIME', 'Tau Time', '\u03C4\u23F3'])
