@@ -15,7 +15,9 @@ session = resp.json()
 
 now = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
-text = random.choice(['Tau Time!', 'tau time', 'TAU TIME', 'Tau Time', '\u03C4\u23F3'])
+# text = random.choice(['Tau Time!', 'tau time', 'TAU TIME', 'Tau Time', '\u03C4\u23F3'])
+
+text = 'TEST POST! HI FROM AN API CALL'
 
 text = 'Unicode Test: \u03C4'
 post = {
